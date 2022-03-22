@@ -18,13 +18,13 @@ class LoginController extends BaseController
         $data = $this->loginModel->findAll();
         // var_dump($data);
         // die;
-        return view('home', ['data' => $data]);
+        return view('view', ['data' => $data]);
     }
 
     public function address()
     {
         return view('shopping');
-    }
+        }
 
 
 
@@ -38,7 +38,7 @@ class LoginController extends BaseController
         $loginModel->transBegin();
         if (!$loginModel->insert($this->request->getPost())) {
             $this->session->setFlashData('errors', $loginModel->errors());
-            return view('shopping');;
+            return view('shopping');
         }
 
         //     $data = [
@@ -60,7 +60,7 @@ class LoginController extends BaseController
 
         $this->session->setFlashData('message', "Shopping Done Successfully!");
         //  return redirect()->to('home');
-        return redirect('/');
+        return redirect('/view');
 
 
         var_dump($loginModel->errors());
@@ -73,9 +73,9 @@ class LoginController extends BaseController
         $data = $this->loginModel->findAll();
         // var_dump($data);
         // die;
-        $this->session->setFlashData('message', "Data Deleted Successfully!");
+        $this->session->setFlashData('message', "Address Deleted Successfully!");
 
-        return view('/', ['data' => $data]);
+        return view('/view', ['data' => $data]);
     }
 
 
@@ -83,7 +83,7 @@ class LoginController extends BaseController
     {
         // $this->jobModel = new JobsModel();
         $data['loginModel'] = $this->loginModel->find($id);
-        $this->session->setFlashData('message', "Edit Job Successfully!");
+        $this->session->setFlashData('message', "Edit Address Successfully!");
 
         return view('update', $data);
     }
@@ -98,7 +98,7 @@ class LoginController extends BaseController
         $loginModel->transCommit();
         $data = ($this->request->getPost());
 
-        $this->session->setFlashData('message', "Job Update Successfully!");
+        $this->session->setFlashData('message', "Address Update Successfully!");
         // return view('home', $data);
         return redirect()->to('/');
     }

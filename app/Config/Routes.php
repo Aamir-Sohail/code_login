@@ -31,16 +31,26 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'LoginController::index');
+$routes->get('/', 'RegisterController::index');
+$routes->get('shopping', 'LoginController::index');
 $routes->get('/insert', 'LoginController::address');
 $routes->post('insert','LoginController::insert');
-$routes->delete('/delete/(:num)', 'LoginController::delete/$1');
+// $routes->delete('/delete/(:num)', 'LoginController::delete/$1');
 $routes->get('/delete/(:num)', 'LoginController::delete/$1');
+
 $routes->get('/home/(:num)', 'LoginController::delete/$1');
 $routes->get('/update/(:num)', 'LoginController::edit/$1');
 $routes->post('/update/(:num)', 'LoginController::updatejob/$1');
+//the new paths for registration....
 
 
+$routes->post('register','RegisterController::register');
+// $routes->get('register','RegisterController::index');
+$routes->get('login','RegisterController::loginuser');
+$routes->post('login','RegisterController::login');
+$routes->get('logout','RegisterController::logout');
+// $routes->get('login','RegisterController::index');
+// $routes->match(['get', 'put'], 'products', 'Product::feature');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

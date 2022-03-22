@@ -23,8 +23,10 @@ endif;
 ?>
 
 
-
+<a href="<?= base_url('logout')?>" input type="submit">LogOut</a>
 <form action="<?= base_url('/insert') ?>" method="post">
+<?= csrf_field() ?>
+
     <div class="form-group">
         <label>Address</label>
         <input type="text" name="address" value="<?= old('address') ?>" placeholder="Address" class="form-control input-lg

@@ -29,6 +29,13 @@
           <div class="d-flex justify-content-between">
           Address ID
                 <?= $items['id'] ?>
+                <!-- <form action="<?= base_url('delete/ ' . $items['id']) ?>" method="post">
+                <button type="submit">
+                  <img src="<?= base_url('/assets/cross.png') ?>" width="20" alt="">
+                </button>
+                <input type="hidden" name="method" value="DELETE">
+              </form> -->
+
                 
     <a href="<?= base_url('delete/' . $items['id']) ?>" ?><img src="<?= base_url('/assets/cross.png') ?>" width="20" alt=""></a>
     <a href="<?= base_url('update/' . $items['id']) ?>" ?><img src="<?= base_url('/assets/refresh-line.png') ?>" width="20" alt=""></a>

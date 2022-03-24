@@ -6,16 +6,17 @@ namespace App\Models;
 use CodeIgniter\Model;
 use Prophecy\Doubler\Generator\Node\ReturnTypeNode;
 
-class LoginModel extends Model
+class AddressModel extends Model
 {
     protected $primaryKey = "id";
-    protected $table = "logins";
+    protected $table = "address";
     protected $DBGroup = "default";
     protected $allowedFields = [
        'address','country','city','postel_code','created_at'
     ];
     protected $useTimestamps = false;
     protected $validationRules = [
+        // 'user_id'=> 'required',
         'address'=> 'required',
         'country'=> 'required',
         'city'=> 'required',

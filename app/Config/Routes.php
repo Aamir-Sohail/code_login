@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Controllers\AddressController;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -32,25 +34,18 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'RegisterController::index');
-$routes->get('shopping', 'LoginController::index');
-$routes->get('/insert', 'LoginController::address');
-$routes->post('insert','LoginController::insert');
-// $routes->delete('/delete/(:num)', 'LoginController::delete/$1');
-$routes->get('/delete/(:num)', 'LoginController::delete/$1');
-
-$routes->get('/home/(:num)', 'LoginController::delete/$1');
-$routes->get('/update/(:num)', 'LoginController::edit/$1');
-$routes->post('/update/(:num)', 'LoginController::updatejob/$1');
+$routes->get('shopping', 'AddressController::index');
+$routes->get('insert', 'AddressController::address');
+$routes->post('insert','AddressController::insert');
+$routes->get('/delete/(:num)', 'AddressController::delete/$1');
+$routes->get('/home/(:num)', 'AddressController::delete/$1');
+$routes->get('/update/(:num)', 'AddressController::edit/$1');
+$routes->post('/update/(:num)', 'AddressController::updatejob/$1',['filter'=>'isLoggedIn']);
 //the new paths for registration....
-
-
 $routes->post('register','RegisterController::register');
-// $routes->get('register','RegisterController::index');
 $routes->get('login','RegisterController::loginuser');
 $routes->post('login','RegisterController::login');
 $routes->get('logout','RegisterController::logout');
-// $routes->get('login','RegisterController::index');
-// $routes->match(['get', 'put'], 'products', 'Product::feature');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

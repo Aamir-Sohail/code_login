@@ -42,7 +42,9 @@ class RegisterModel extends Model
     {
         return $this->db->transCommit();
     }
-    public function hashPassword($data){
+    public function hashPassword($data){        
+        // var_dump($data);
+        // die;
        $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
        return $data; 
     }
@@ -51,10 +53,11 @@ class RegisterModel extends Model
     {
     
         $password = $user['password'];
-        $user = $this->getWhere(['email' => $user['email']]);
+        $email = $user['email'];
+        $user = $this->getWhere(['email'=>$user['email'],'password' => $user['password']]);
         if ($user->resultID->num_rows > 0) {
             $user = $user->getRow();
-            // $verfiy = password_verify($password , $user->password);
+            $verfiy = password_verify($password , $user->password);
 
             $verfiy = $password;
             if ($verfiy) {

@@ -48,37 +48,36 @@ class RegisterController extends BaseController
         return view('login');
     }
 
- public function loginuser(){
+    public function loginuser()
+    {
 
-       return view('login');
- }
+        return view('login');
+    }
 
-        public function login()
-        {
-    
-            $email = $this->request->getPost('email');
-            $password = $this->request->getPost('password');
-            $user = $this->registerModel->authenticate($this->request->getPost());
+    public function login()
+    {
+
+        $user = $this->registerModel->authenticate($this->request->getPost());
+     
+            // var_dump($user);
+            // die;
+            $session = session();
             if ($user) {
-                // var_dump($user);
-                // die;
-                // $this->session->set('user', $user);
+                $this->session->set('user', $user);
                 $this->session->setFlashData('message', 'LoggedIn Successfully!');
-                return view ('shopping');
-            }
-           else{
-            $this->session->setFlashData('message', "Login UnSuccessfully!");
-            // return redirect()->to('login')->withInput();
-        
-           }
-      return view('login');
+                return redirect()->to('shopping');
+            
+        } else {
 
-   
+            $this->session->setFlashData('message', 'Unknown Email or Password');
+            return redirect()->to('login')->withInput();
         }
-         public function logout(){
-             $this->session->remove('user');
-            $this->session->setFlashData('message', "LogOut Successfully!");
-            return redirect()->to('login');
-
-         }
+    }
+    public function logout()
+    {
+        $this->session->remove('user');
+        $this->session->setFlashData('message', "LogOut Successfully!");
+        return redirect()->to('login');
+    }
+    
 }

@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class Login extends Migration
+class Address extends Migration
 {
     public function up()
     {
@@ -19,11 +19,12 @@ class Login extends Migration
         ]);
         $this->forge->addPrimaryKey('id',true);
       
-        $this->forge->createTable('logins',true);
+        $this->forge->createTable('address',true);
     }
 
     public function down()
     {
-        $this->forge->dropTable('logins');
+        $this->forge->dropTable('address');
+
     }
 }

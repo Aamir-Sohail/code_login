@@ -8,6 +8,7 @@
 <?php endif; ?>
 
 
+<a href="<?= base_url('logout')?>" input type="submit">LogOut</a>
 
 
 <div class="container">
@@ -23,12 +24,15 @@
       <div class="col-lg-12">
         
         <div class="row">
-      
+        
         <?php foreach ($data as $items) :  ?>
         <div class="col-6">
           <div class="d-flex justify-content-between">
           Address ID
                 <?= $items['id'] ?>
+             
+
+          
                 <!-- <form action="<?= base_url('delete/ ' . $items['id']) ?>" method="post">
                 <button type="submit">
                   <img src="<?= base_url('/assets/cross.png') ?>" width="20" alt="">
@@ -62,6 +66,5 @@
 </div>
 
 </div>
-
 
 <?php $this->endSection() ?>

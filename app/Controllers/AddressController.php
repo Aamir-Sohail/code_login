@@ -3,14 +3,15 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\LoginModel;
+use App\Models\AddressModel;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
-class LoginController extends BaseController
+class AddressController extends BaseController
 {
     private $loginModel = NULL;
     public function __construct()
     {
-        $this->loginModel = new LoginModel();
+        $this->loginModel = new AddressModel();
     }
 
     public function index()
@@ -18,27 +19,30 @@ class LoginController extends BaseController
         $data = $this->loginModel->findAll();
         // var_dump($data);
         // die;
-        return view('view', ['data' => $data]);
+        return view('/home', ['data' => $data]);
     }
 
     public function address()
     {
         return view('shopping');
-        }
-
+    }
 
 
 
     public function insert()
     {
-        $loginModel = new LoginModel();
+        $loginModel = new AddressModel();
 
 
 
         $loginModel->transBegin();
+        // $data = ($this->request->getPost());
+
+        // var_dump($this->request->getPost());
+        // die;
         if (!$loginModel->insert($this->request->getPost())) {
             $this->session->setFlashData('errors', $loginModel->errors());
-            return view('shopping');
+            return redirect('shopping')->withInput();
         }
 
         //     $data = [
@@ -53,6 +57,7 @@ class LoginController extends BaseController
         $loginModel->transRollBack();
 
         $loginModel->insert($data);
+
         // var_dump($data);
         // die;
 
@@ -60,7 +65,10 @@ class LoginController extends BaseController
 
         $this->session->setFlashData('message', "Shopping Done Successfully!");
         //  return redirect()->to('home');
-        return redirect('/view');
+        // return view('home');
+        $data = $this->loginModel->findAll();
+        // return view('home' ['data->']);
+        return redirect('home', ['data' => $data]);
 
 
         var_dump($loginModel->errors());
@@ -75,31 +83,41 @@ class LoginController extends BaseController
         // die;
         $this->session->setFlashData('message', "Address Deleted Successfully!");
 
-        return view('/view', ['data' => $data]);
+        return view('/home', ['data' => $data]);
     }
 
 
-    public function edit($id = null)
+    public function edit($id)
     {
         // $this->jobModel = new JobsModel();
-        $data['loginModel'] = $this->loginModel->find($id);
+        $user['loginModel'] = $this->loginModel->join('register', 'register.id=address.id')->find($id);
+        // var_dump($user);
+        // die;
+        if (!$user) {
+            throw PageNotFoundException::forPageNotFound('User Not Found');
+        }
         $this->session->setFlashData('message', "Edit Address Successfully!");
 
-        return view('update', $data);
+        return view('update', $user);
     }
     public function updateJob($id)
     {
-        $loginModel = new loginModel();
+        $loginModel = new AddressModel();
         $loginModel->transBegin();
+
         if (!$loginModel->update($id, $this->request->getPost())) {
             $this->session->setFlashData('errors', $loginModel->errors());
             return redirect()->to('update')->withInput();
         }
         $loginModel->transCommit();
-        $data = ($this->request->getPost());
 
+        // $data = $this->request->getPost();
+        // var_dump($data); die;
         $this->session->setFlashData('message', "Address Update Successfully!");
-        // return view('home', $data);
-        return redirect()->to('/');
+        // return view('home');
+        return redirect()->to('shopping');
+        // return view('home');
+
+
     }
 }

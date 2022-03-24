@@ -22,8 +22,14 @@ endif;
 
 ?>
 
+<div class=" container">
+    <div class="col">
+    <a href="<?= base_url('logout')?>" input type="submit">LogOut</a>
 
-<a href="<?= base_url('logout')?>" input type="submit">LogOut</a>
+    </div>
+</div>
+
+
 <form action="<?= base_url('/insert') ?>" method="post">
 <?= csrf_field() ?>
 
@@ -87,6 +93,5 @@ endif;
     <button type="submit" class="btn btn-primary">Submit</button>
     <button type="submit" class="btn btn-Danger">Cancal</button>
 </form>
-
 
 <?php $this->endSection() ?>

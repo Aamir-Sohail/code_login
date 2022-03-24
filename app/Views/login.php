@@ -31,32 +31,32 @@ endif;
 
 <h3>Login Form</h3>
   <div class="col">
-    <div class="row">
-      <input type="email" name="email"  placeholder=" Enter User-Email" value="<?= old('email') ?>" class="form-control input-lg
-             <?php isset($errors['email']) ? 'is-invalide' : 'is-valid' ?>
+  <div class="row">
+      <input type="email" name="email" value="<?= old('email') ?>"  placeholder="Enter Email" class="form-control input-lg
+             <?php isset($errors['email']) ? 'is-invalide' : 'is-valid' ?>">
             <?php if (isset($errors['email'])) : ?>
                 <p class="invalid-feedback d-block">
                     <?php echo $errors['email'] ?>
                 </p>
 
-            <?php endif; ?>">
+            <?php endif; ?>
     </div>
    
     <div class="row">
-      <input type="password" name="password" value="<?= old('password') ?>" placeholder=" Enter Password" class="form-control input-lg
-             <?php isset($errors['password']) ? 'is-invalide' : 'is-valid' ?>
+      <input type="password" name="password" value="<?= old('password') ?>"  placeholder="Enter Password" class="form-control input-lg
+             <?php isset($errors['password']) ? 'is-invalide' : 'is-valid' ?>">
             <?php if (isset($errors['password'])) : ?>
                 <p class="invalid-feedback d-block">
                     <?php echo $errors['password'] ?>
                 </p>
 
-            <?php endif; ?>">
+            <?php endif; ?>
     </div>
     
   </div>
   <div>
   <button type="submit" class="btn btn-info">Login</button>
-  <button type="submit" class="btn btn-success">Register</button>
+  <button type="submit" class="btn btn-success">Cancal</button>
             </div>
       <a href="<?= base_url('/')?>" >Register! If You aren't </a>
 

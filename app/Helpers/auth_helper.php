@@ -15,7 +15,8 @@ function allowEdit($id)
     $user = session()->get('user');
     //   var_dump($user);
     //  die;
-if($id['username']===$id)
+if($user['id']===$id)
+// if($id===$id)
 {
     return true;
 }

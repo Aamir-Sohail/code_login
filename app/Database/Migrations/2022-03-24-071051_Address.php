@@ -10,6 +10,7 @@ class Address extends Migration
     {
         $this->forge->addField([
             'id'         => ['type' =>  'INT', 'constraint' =>11 ,'auto_increment'=> true, 'unsinged'=>true,], 
+            'user_id'     =>['type' =>  'INT', 'constraint' =>11 ], 
             'address'       => ['type' => 'varchar', 'constraint' => 31],     
             'country'      => ['type' => 'varchar', 'constraint' => 63],
             'city'   => ['type' => 'varchar', 'constraint' => 255],

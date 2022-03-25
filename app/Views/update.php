@@ -22,13 +22,26 @@ endif;
 
 ?>
 
-<?php if (allowEdit($id)): ?>
+<?php  if (allowEdit($loginModel['user_id'])): ?>
 
 
     <form action="<?= base_url('update/' . $loginModel['id']) ?>" method="post">
 
 
         <?= csrf_field() ?>
+
+
+        <div class="form-group">
+            <label>User_id</label>
+            <input type="text" name="user_id" value="<?= $loginModel['user_id'] ?>" placeholder="user_id" class="form-control input-lg
+             <?php isset($errors['user_id']) ? 'is-invalide' : 'is-valid' ?>">
+            <?php if (isset($errors['user_id'])) : ?>
+                <p class="invalid-feedback d-block">
+                    <?php echo $errors['user_id'] ?>
+                </p>
+            <?php endif; ?>
+   
+        </div>
 
         <div class="form-group">
             <label>Address</label>

@@ -90,9 +90,9 @@ class AddressController extends BaseController
     public function edit($id)
     {
         // $this->jobModel = new JobsModel();
-        $user['loginModel'] = $this->loginModel->join('register', 'register.id=address.id')->find($id);
-        // var_dump($user);
-        // die;
+        $user['loginModel'] = $this->loginModel->join('register', 'register.id=address.user_id')->find($id);
+        var_dump($user);
+        die;
         if (!$user) {
             throw PageNotFoundException::forPageNotFound('User Not Found');
         }

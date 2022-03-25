@@ -47,7 +47,8 @@
 
           </div>
           <div class="card">
-         
+
+          
           <?php echo $items['address'] ?>
                 <?php echo $items['country'] ?>
                 <?php echo $items['city'] ?>

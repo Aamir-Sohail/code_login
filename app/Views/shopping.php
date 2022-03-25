@@ -33,6 +33,19 @@ endif;
 <form action="<?= base_url('/insert') ?>" method="post">
 <?= csrf_field() ?>
 
+
+<div class="form-group">
+        <label>User_ID</label>
+        <input type="text" name="user_id" value="<?= old('user_id') ?>" placeholder="user_id" class="form-control input-lg
+             <?php isset($errors['user_id']) ? 'is-invalide' : 'is-valid' ?>">
+            <?php if (isset($errors['user_id'])) : ?>
+                <p class="invalid-feedback d-block">
+                    <?php echo $errors['user_id'] ?>
+                </p>
+
+            <?php endif; ?>
+    </div>
+
     <div class="form-group">
         <label>Address</label>
         <input type="text" name="address" value="<?= old('address') ?>" placeholder="Address" class="form-control input-lg

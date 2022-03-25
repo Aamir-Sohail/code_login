@@ -22,10 +22,6 @@ class CheckedLogined implements FilterInterface
 
     public function after(HTTPRequestInterface $request, HTTPResponseInterface $response, $arguments = null)
     {
-        $user = session()->get('user');
-        if ($user['isLoggedIn']) {
-            session()->setFlashData('message', 'You are LoggedIn');
-            return redirect()->to('shopping');
-        }
+      
     }
 }

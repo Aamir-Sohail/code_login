@@ -20,8 +20,10 @@ if (session()->getFlashData('errors') != null) :
 endif;
 // var_dump($errors);
 
+?>  
+<?php var_dump($user);
+die;
 ?>
-
 <?php  if (allowEdit($loginModel['user_id'])): ?>
 
 

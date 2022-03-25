@@ -46,6 +46,8 @@ class RegisterModel extends Model
         // var_dump($data);
         // die;
        $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+            session()->setFlashData('name',$data['data']['name']);
+      unset($data['data']['name']);
        return $data; 
     }
 
@@ -61,7 +63,7 @@ class RegisterModel extends Model
 
             $verfiy = $password;
             if ($verfiy) {
-                return $user;
+                return  ['user_id' => $user->id, 'email' =>$user->email, 'isLoggedIn'=>true];
             } else {
                 return false;
             }

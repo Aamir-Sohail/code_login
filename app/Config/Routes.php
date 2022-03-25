@@ -33,19 +33,19 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'RegisterController::index');
+$routes->get('/', 'RegisterController::index',['filter'=>'GuestFilter']);
 $routes->get('shopping', 'AddressController::index');
 $routes->get('insert', 'AddressController::address');
 $routes->post('insert','AddressController::insert');
 $routes->get('/delete/(:num)', 'AddressController::delete/$1');
 $routes->get('/home/(:num)', 'AddressController::delete/$1');
 $routes->get('/update/(:num)', 'AddressController::edit/$1');
-$routes->post('/update/(:num)', 'AddressController::updatejob/$1',['filter'=>'userLogined']);
+$routes->post('/update/(:num)', 'AddressController::updatejob/$1');
 //the new paths for registration....
 $routes->post('register','RegisterController::register');
 $routes->get('login','RegisterController::loginuser');
-$routes->post('login','RegisterController::login');
-$routes->get('logout','RegisterController::logout');
+$routes->post('/login','RegisterController::login',['filter'=>'userLogined']);
+$routes->get('logout','RegisterController::logout',['filter'=>'userLogined']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing

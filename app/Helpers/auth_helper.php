@@ -10,12 +10,12 @@ function loggedIn()
     }
     return false;
 }
-function allowEdit($id)
+function allowEdit($user_id)
 {
     $user = session()->get('user');
     //   var_dump($user);
     //  die;
-if($user['id']===$id)
+if($user['user_id']===$user_id)
 // if($id===$id)
 {
     return true;

@@ -12,7 +12,7 @@ class GusetFilter implements FilterInterface
     {
         $user = session()->get('user');
         session()->getFlashData('message', 'You are Already Login');
-        return redirect()->to('shopping');
+        return redirect()->to('/shopping');
     }
     public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
     {

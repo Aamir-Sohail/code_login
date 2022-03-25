@@ -24,6 +24,7 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
         'userLogined' => \App\Filters\CheckedLogined::class,
+        'GuestFilter' => \App\Filters\GusetFilter::class,
     ];
 
     /**

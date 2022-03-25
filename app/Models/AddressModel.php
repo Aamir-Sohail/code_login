@@ -12,11 +12,11 @@ class AddressModel extends Model
     protected $table = "address";
     protected $DBGroup = "default";
     protected $allowedFields = [
-       'address','country','city','postel_code','created_at'
+       'address','country','city','postel_code','created_at','user_id'
     ];
     protected $useTimestamps = false;
     protected $validationRules = [
-        // 'user_id'=> 'required',
+
         'address'=> 'required',
         'country'=> 'required',
         'city'=> 'required',

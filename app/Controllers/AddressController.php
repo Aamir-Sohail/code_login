@@ -68,7 +68,7 @@ class AddressController extends BaseController
         // return view('home');
         $data = $this->loginModel->findAll();
         // return view('home' ['data->']);
-        return redirect('home', ['data' => $data]);
+        return redirect('shopping', ['data' => $data]);
 
 
         var_dump($loginModel->errors());

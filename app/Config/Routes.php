@@ -33,7 +33,7 @@ $routes->setAutoRoute(false);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'RegisterController::index',['filter'=>'GuestFilter']);
+$routes->get('/', 'RegisterController::index');
 $routes->get('shopping', 'AddressController::index');
 $routes->get('insert', 'AddressController::address');
 $routes->post('insert','AddressController::insert');
@@ -46,6 +46,10 @@ $routes->post('register','RegisterController::register');
 $routes->get('login','RegisterController::loginuser');
 $routes->post('/login','RegisterController::login',['filter'=>'userLogined']);
 $routes->get('logout','RegisterController::logout',['filter'=>'userLogined']);
+
+// ResourcesFull Routes For RestFul Apiz....
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

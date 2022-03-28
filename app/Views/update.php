@@ -20,11 +20,10 @@ if (session()->getFlashData('errors') != null) :
 endif;
 // var_dump($errors);
 
-?>  
-<?php var_dump($user);
-die;
 ?>
-<?php  if (allowEdit($loginModel['user_id'])): ?>
+ 
+
+
 
 
     <form action="<?= base_url('update/' . $loginModel['id']) ?>" method="post">
@@ -42,7 +41,7 @@ die;
                     <?php echo $errors['user_id'] ?>
                 </p>
             <?php endif; ?>
-   
+
         </div>
 
         <div class="form-group">
@@ -54,7 +53,7 @@ die;
                     <?php echo $errors['address'] ?>
                 </p>
             <?php endif; ?>
-   
+
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -105,9 +104,4 @@ die;
         <button type="submit" class="btn btn-Danger">Cancal</button>
     </form>
 
-<?php else : ?>
-    <h2>
-        You are Not LoggedIn
-    </h2>
-<?php endif; ?>
 <?php $this->endSection() ?>

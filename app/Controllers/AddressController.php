@@ -91,8 +91,8 @@ class AddressController extends BaseController
     {
         // $this->jobModel = new JobsModel();
         $user['loginModel'] = $this->loginModel->join('register', 'register.id=address.user_id')->find($id);
-        var_dump($user);
-        die;
+        // var_dump($user);
+        // die;
         if (!$user) {
             throw PageNotFoundException::forPageNotFound('User Not Found');
         }
